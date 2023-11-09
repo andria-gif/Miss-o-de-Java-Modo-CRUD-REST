@@ -8,6 +8,15 @@ public class ManipuladorDaValidacaoDeExecao {
     @ExceptionHandler(ValidacaoDeExececao.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public RespostaErro handleValidationException(ValidacaoDeExececao ve) {
+        RespostaErro resposta = new RespostaErro();
+        resposta.setMessagem("Preencha o campo corretamente!");
+        resposta.setCodigo(100);
+        resposta.setStatus("Erro");
+
+        PresonalizacaoErro erro = new PresonalizacaoErro();
+        erro.setMensagem(ve.getMessage());
+
+        return resposta;
 
     }
 }

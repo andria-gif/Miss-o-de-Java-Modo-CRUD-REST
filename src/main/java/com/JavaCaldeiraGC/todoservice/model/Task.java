@@ -14,11 +14,9 @@ public class Task {
     private static final AtomicLong incrementadorDoId = new AtomicLong(0L);
     private long id;
 
-    @ManagedNotification(mensagem= "Digite uma descrição para sua  tarefa!")
-    @Validated
+
     private String descricao;
 
-    @NonNull(mesagem="Digite uma data de vencimento!")
     private Date dataDeVencimento;
 
 
