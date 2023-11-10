@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TaskService {
@@ -19,7 +20,22 @@ public class TaskService {
         return task;
     }
 
+    public Task editTask(Long id, Task tarefaAtualizada) {
+        buscarTarefaPeloId(id).ifPresent(tarefaExistente -> {
+            tarefaExistente.setDescricao(tarefaAtualizada.getDescricao());
+            tarefaExistente.setDataDeVencimento(tarefaAtualizada.getDataDeVencimento());
+            tarefaExistente.setAcaoCompleta((tarefaAtualizada.isAcaoCompleta()));
+        });
+        return tarefaAtualizada;
+    }
 
+    public void deleteTask(Long id) {
+        buscarTarefaPeloId(id).ifPresent(tasks::remove);
+    }
+
+    public Optional<Task> buscarTarefaPeloId(Long id) {
+        return tasks.stream().filter(task -> task.getId() == id).findFirst();
+    }
 }
 
 

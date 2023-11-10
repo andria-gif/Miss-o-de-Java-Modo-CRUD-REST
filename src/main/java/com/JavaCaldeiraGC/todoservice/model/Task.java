@@ -1,5 +1,9 @@
 package com.JavaCaldeiraGC.todoservice.model;
 
+import jakarta.validation.constraints.AssertFalse;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NonNull;
 
@@ -15,11 +19,14 @@ public class Task {
     private long id;
 
 
+    @NotEmpty(message = "Por favor preencha o campo conforme o solicitado ")
     private String descricao;
 
+    @NotNull(message = "Por favor preencha o campo conforme o solicitado ")
+    @FutureOrPresent //regula a data de vencimento
     private Date dataDeVencimento;
 
-
+    @AssertFalse(message = "Por favor preencha o campo conforme o solicitado ")
     private boolean acaoCompleta;
 
 
