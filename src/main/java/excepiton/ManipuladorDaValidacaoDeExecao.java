@@ -10,13 +10,12 @@ public class ManipuladorDaValidacaoDeExecao {
     public RespostaErro handleValidationException(ValidacaoDeExececao ve) {
         RespostaErro resposta = new RespostaErro();
         resposta.setMessagem("Preencha o campo corretamente!");
-        resposta.setCodigo(100);
-        resposta.setStatus("Erro");
+        resposta.setCodigo(400);
+        resposta.setStatus("Bad Request");
 
         PresonalizacaoErro erro = new PresonalizacaoErro();
         erro.setMensagem(ve.getMessage());
 
         return resposta;
-
     }
 }
