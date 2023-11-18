@@ -42,7 +42,7 @@ public class TaskController {
         //Spring para encapsular a resposta HTTP retornada pelo método.
 
         if (result.hasErrors()) {
-            respostaErro.setMessagem("Preencha o campo corretamente!");
+            respostaErro.setMensagem("Preencha o campo corretamente!");
             respostaErro.setCodigo(HttpStatus.BAD_REQUEST.value());
             respostaErro.setStatus(HttpStatus.BAD_REQUEST.getReasonPhrase());
 
@@ -75,7 +75,7 @@ public class TaskController {
                     taskField.set(tarefaExistente,
                             value);
                 } catch (NoSuchFieldException | IllegalAccessException e) {
-                    respostaErro.setMessagem("Erro ao editar a tarefa!");
+                    respostaErro.setMensagem("Erro ao editar a tarefa!");
                     respostaErro.setCodigo(HttpStatus.INTERNAL_SERVER_ERROR.value());
                     respostaErro.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase());
                     presonalizacaoErro.setMensagem("Erro ao editar o campo: " + field);
@@ -86,7 +86,7 @@ public class TaskController {
             taskService.editTask(id, tarefaExistente);
             return ResponseEntity.ok(tarefaExistente);
         } else {
-            respostaErro.setMessagem("Tarefa " + id + " não encontrada");
+            respostaErro.setMensagem("Tarefa " + id + " não encontrada");
             respostaErro.setCodigo(HttpStatus.NOT_FOUND.value());
             respostaErro.setStatus(HttpStatus.NOT_FOUND.getReasonPhrase());
 
@@ -101,7 +101,7 @@ public class TaskController {
             taskService.deleteTask(id);
             return ResponseEntity.ok("Sucesso!");
         } else {
-            respostaErro.setMessagem("Tarefa não não encontrada!");
+            respostaErro.setMensagem("Tarefa não não encontrada!");
             respostaErro.setCodigo(HttpStatus.NOT_FOUND.value());
             respostaErro.setStatus(HttpStatus.NOT_FOUND.getReasonPhrase());
 

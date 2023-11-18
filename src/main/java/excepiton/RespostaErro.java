@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 public class RespostaErro {
-    private String messagem;
+    private String mensagem;
     private int codigo;
     private String status;
     private List<PresonalizacaoErro> listaerros;
